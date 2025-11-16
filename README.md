@@ -45,8 +45,33 @@ A-G-I_RFP/
 
 ### 1. Install Dependencies
 
+**Using uv (Recommended - Much Faster):**
+
+```bash
+# Install uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
+# or: brew install uv
+
+# Install all dependencies
+uv sync
+
+# Install with OCR support for scanned PDFs
+uv sync --extra ocr
+
+# Install with dev tools
+uv sync --extra dev
+
+# Install everything
+uv sync --all-extras
+```
+
+**Using pip:**
+
 ```bash
 pip install -r requirements.txt
+
+# For OCR support
+pip install pytesseract pdf2image Pillow
 ```
 
 ### 2. Configure Environment
@@ -68,10 +93,17 @@ python src/data/fetch_sam_data.py --limit 20
 python src/data/ingest_documents.py
 ```
 
-### 5. Run the Agent
+### 5. Run the Deep Agent
 
 ```bash
-python src/agents/rfp_agent.py --rfp-path data/raw/sample_rfp.pdf
+# Generate RFP response
+python src/agents/rfp_agent.py data/raw/sample_rfp.pdf
+
+# Save output to file
+python src/agents/rfp_agent.py data/raw/sample_rfp.pdf --output response.txt
+
+# View examples and workflow
+python examples/generate_rfp_response.py
 ```
 
 ## API Keys Required
@@ -84,21 +116,25 @@ python src/agents/rfp_agent.py --rfp-path data/raw/sample_rfp.pdf
 
 ### Phase 1 - MVP (Current)
 - [x] Data ingestion from SAM.gov
-- [x] Document parsing (PDF, Word)
-- [x] Vector database setup
-- [ ] Basic deep agent with planning
-- [ ] RFP response generation
+- [x] Document parsing (PDF, Word) with OCR support
+- [x] Vector database setup with semantic search
+- [x] Deep agent orchestrator with planning
+- [x] Specialized subagents (Technical, Pricing, Qualifications, Executive Summary)
+- [x] RFP response generation workflow
+- [x] Vector-based knowledge retrieval
 
-### Phase 2 - Enterprise
+### Phase 2 - Enterprise (Planned)
 - [ ] Multi-user support
-- [ ] Workflow automation
-- [ ] CRM integrations (Salesforce)
+- [ ] Workflow automation and approvals
+- [ ] CRM integrations (Salesforce, HubSpot)
 - [ ] Real-time collaboration
+- [ ] API layer with async processing
 
-### Phase 3 - Advanced
+### Phase 3 - Advanced (Planned)
 - [ ] Win/loss analytics
 - [ ] Compliance scoring
 - [ ] Competitive intelligence
+- [ ] Automated tender discovery
 
 ## License
 
