@@ -45,8 +45,33 @@ A-G-I_RFP/
 
 ### 1. Install Dependencies
 
+**Using uv (Recommended - Much Faster):**
+
+```bash
+# Install uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
+# or: brew install uv
+
+# Install all dependencies
+uv sync
+
+# Install with OCR support for scanned PDFs
+uv sync --extra ocr
+
+# Install with dev tools
+uv sync --extra dev
+
+# Install everything
+uv sync --all-extras
+```
+
+**Using pip:**
+
 ```bash
 pip install -r requirements.txt
+
+# For OCR support
+pip install pytesseract pdf2image Pillow
 ```
 
 ### 2. Configure Environment
