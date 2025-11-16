@@ -3,7 +3,7 @@ name = "agi-rfp"
 version = "0.1.0"
 description = "AI-powered RFP response generation using LangGraph deepagents"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 license = { text = "MIT" }
 authors = [
     { name = "ADITHYAG73" }
@@ -14,7 +14,6 @@ classifiers = [
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
 ]
@@ -94,7 +93,7 @@ packages = ["src"]
 
 [tool.black]
 line-length = 100
-target-version = ["py310", "py311", "py312"]
+target-version = ["py311", "py312"]
 include = '\.pyi?$'
 extend-exclude = '''
 /(
@@ -112,7 +111,7 @@ extend-exclude = '''
 
 [tool.ruff]
 line-length = 100
-target-version = "py310"
+target-version = "py311"
 select = [
     "E",  # pycodestyle errors
     "W",  # pycodestyle warnings
